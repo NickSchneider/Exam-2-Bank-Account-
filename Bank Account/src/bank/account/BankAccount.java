@@ -1,24 +1,44 @@
 package bank.account;
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class BankAccount 
 {
     
     public static void main(String[] args) 
     {      
-       Account account = new Account(100000);
-       account.credit(56000);       
-       account.debit(65000);
-       System.out.printf("Current Balance: \n", account.getAccountBalance());
-       
-       SavingsAccount savings = new SavingsAccount(150000);
-       savings.credit(65000);
-       savings.debit(56000);
-       System.out.printf("Current Balance: \n", savings.getAccountBalance());
-       
-       CheckingAccount checking = new CheckingAccount(200000);
-       checking.credit(56000);
-       checking.debit(65000);
-       System.out.printf("Current Balance: \n", checking.getAccountBalance());
+        Scanner input = new Scanner(System.in);
+        ArrayList<Account> bank = new ArrayList<>();
+        
+        String answer = "0";
+        
+        while(!answer.equals("Q"))
+        {
+            System.out.println("What type of account would you like to enter?");
+            System.out.println("Enter 'S' for Savings, 'C' for checking, or 'Q' to quit");
+            answer = input.nextLine();
+            
+            if(answer.equals("S"))
+            {
+               System.out.print("Initial balance: ");
+               bank.add(new SavingsAccount(input.nextDouble())); 
+               input.nextLine();
+            }
+            if(answer.equals("C"))
+            {
+               System.out.print("Initial balance: ");
+               bank.add(new CheckingAccount(input.nextDouble()));
+               input.nextLine();               
+            }
+            if(answer.equals("Q"))
+            {
+                for(Account act : bank)
+                {
+                    
+                }
+            }
+        }
+                
     }
            
     

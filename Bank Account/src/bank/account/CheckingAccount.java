@@ -4,13 +4,13 @@ public class CheckingAccount extends Account
 {
     static double fee = 1.35;
     
-    CheckingAccount(double initialBalance)
+    CheckingAccount(double accountBalance)
     {
-        super(initialBalance);                
+        super(accountBalance);                
     }
     
     @Override
-    public boolean credit(double deposit)
+    public boolean credit()
     {
         if(creditSuccess = true)
         {
@@ -21,8 +21,8 @@ public class CheckingAccount extends Account
     }
     
     @Override
-    public boolean debit(double withdrawl)
-    {
+    public boolean debit()
+    {        
         if(debitSuccess = true)
         {
             currentBalance = getAccountBalance() - fee;

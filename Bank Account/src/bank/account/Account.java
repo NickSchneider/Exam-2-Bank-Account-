@@ -1,22 +1,25 @@
 package bank.account;
-
+import java.util.Scanner;
 public class Account 
 {
-    private double accountBalance;
+    Scanner input =new Scanner(System.in);
+    protected double accountBalance = 0;
     double currentBalance;
-
+    double withdrawl;
+    double deposit;
     boolean creditSuccess;
     boolean debitSuccess = false;
+    String answer = "0";
     
-    Account(double initialBalance)
+    Account(double accountBalance)
     {
-        if(initialBalance < 0.0)
+        if(accountBalance < 0.0)
         {
             System.out.println("Initial balnce must be greater than or equal to zero");
         }
-        if(initialBalance > 0.0)
+        if(accountBalance > 0.0)
         {
-            accountBalance = initialBalance;
+            this.accountBalance = accountBalance;
         }
 
     }
@@ -31,15 +34,29 @@ public class Account
         return accountBalance;
     }
     
-    public boolean credit(double deposit)
+    public boolean credit()
     {
+        System.out.println("Would you like to make a Deposit? 'Y' or 'N'");
+        answer = input.nextLine();
+        if(answer.equals("Y"))
+        {
+            System.out.print("Deposit amount: ");
+            deposit = input.nextDouble();
+        }
         currentBalance = getAccountBalance() + deposit;
         setAccountBalance();
         return creditSuccess = true;
     }
     
-    public boolean debit(double withdrawl)
+    public boolean debit()
     {
+        System.out.println("Would you like to make a withdrawl? 'Y' or 'N'");
+        answer = input.nextLine();
+        if(answer.equals("Y"))
+        {
+            System.out.print("Withdrawl amount: ");
+            withdrawl = input.nextDouble();
+        }
         if(withdrawl > accountBalance)
         {
             System.out.println("Debit amount exceeded account balance");

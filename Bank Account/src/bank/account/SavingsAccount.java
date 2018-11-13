@@ -4,9 +4,9 @@ public class SavingsAccount extends Account
 {
     static double interest = .0008;
         
-    SavingsAccount(double initialBalance)
+    SavingsAccount(double accountBalance)
     {
-        super(initialBalance);   
+        super(accountBalance);   
         calculateInterest();
     }
     
@@ -17,7 +17,7 @@ public class SavingsAccount extends Account
     }
     
     @Override
-    public boolean credit(double deposit)
+    public boolean credit()
     {
         currentBalance = getAccountBalance() + interest;
         setAccountBalance();
