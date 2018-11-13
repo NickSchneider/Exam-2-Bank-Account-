@@ -4,21 +4,21 @@ public class Account
 {
     private double accountBalance;
     double currentBalance;
-    double withdrawl;
-    double deposit;
+
     boolean creditSuccess;
     boolean debitSuccess = false;
     
     Account(double initialBalance)
     {
-        if(initialBalance < 0)
+        if(initialBalance < 0.0)
         {
             System.out.println("Initial balnce must be greater than or equal to zero");
         }
-        else
+        if(initialBalance > 0.0)
         {
             accountBalance = initialBalance;
         }
+
     }
 
     public void setAccountBalance()
@@ -31,13 +31,14 @@ public class Account
         return accountBalance;
     }
     
-    public boolean credit()
+    public boolean credit(double deposit)
     {
-        accountBalance += deposit;
+        currentBalance = getAccountBalance() + deposit;
+        setAccountBalance();
         return creditSuccess = true;
     }
     
-    public boolean debit()
+    public boolean debit(double withdrawl)
     {
         if(withdrawl > accountBalance)
         {
@@ -45,7 +46,8 @@ public class Account
         }
         else
         {
-            accountBalance -= withdrawl;
+            currentBalance = getAccountBalance() - withdrawl;
+            setAccountBalance();
         }
         return debitSuccess = true;
     }
