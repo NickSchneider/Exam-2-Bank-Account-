@@ -43,8 +43,7 @@ public class Account
         {
             System.out.print("Deposit amount: ");
             deposit = input.nextDouble();
-            currentBalance = getAccountBalance() + deposit;
-            setAccountBalance();
+            accountBalance += deposit;
             creditSuccess = true;
         }
         if(answer.equals("N"))
@@ -70,8 +69,8 @@ public class Account
             }
             else
             {
-                currentBalance = getAccountBalance() - withdrawl;
-                setAccountBalance();
+                accountBalance -= withdrawl;
+                
                 debitSuccess = true;
             }
         }

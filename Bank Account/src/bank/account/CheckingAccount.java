@@ -14,8 +14,7 @@ public class CheckingAccount extends Account
     {
         if(creditSuccess = true)
         {
-            currentBalance = getAccountBalance() - fee;
-            setAccountBalance();
+            accountBalance -= fee;            
         }
         return creditSuccess;        
     }
@@ -25,8 +24,7 @@ public class CheckingAccount extends Account
     {        
         if(debitSuccess = true)
         {
-            currentBalance = getAccountBalance() - fee;
-            setAccountBalance();
+            accountBalance -= fee;            
         }
         return debitSuccess;
     }

@@ -12,15 +12,14 @@ public class SavingsAccount extends Account
     
     public double calculateInterest()
     {
-        interest = getAccountBalance() * .0008;        
+        interest = accountBalance * .0008;        
         return interest;
     }
     
     @Override
     public boolean credit()
     {
-        currentBalance = getAccountBalance() + interest;
-        setAccountBalance();
+        accountBalance += interest;
         return creditSuccess;
     }
 }
