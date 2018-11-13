@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Account 
 {
     Scanner input =new Scanner(System.in);
-    protected double accountBalance = 0;
+    protected double accountBalance;
     double currentBalance;
     double withdrawl;
     double deposit;
@@ -15,13 +15,14 @@ public class Account
     {
         if(accountBalance < 0.0)
         {
-            System.out.println("Initial balnce must be greater than or equal to zero");
+            System.out.println("Initial balance must be greater than or equal to zero");
         }
-        if(accountBalance > 0.0)
+        if(accountBalance >= 0.0)
         {
             this.accountBalance = accountBalance;
         }
-
+        credit(); 
+        debit();
     }
 
     public void setAccountBalance()
@@ -42,10 +43,15 @@ public class Account
         {
             System.out.print("Deposit amount: ");
             deposit = input.nextDouble();
+            currentBalance = getAccountBalance() + deposit;
+            setAccountBalance();
+            creditSuccess = true;
         }
-        currentBalance = getAccountBalance() + deposit;
-        setAccountBalance();
-        return creditSuccess = true;
+        if(answer.equals("N"))
+        {
+            creditSuccess = false;
+        }
+        return creditSuccess;
     }
     
     public boolean debit()
@@ -56,17 +62,20 @@ public class Account
         {
             System.out.print("Withdrawl amount: ");
             withdrawl = input.nextDouble();
+        
+            if(withdrawl > accountBalance)
+            {
+                System.out.println("Debit amount exceeded account balance");
+                debitSuccess = false;
+            }
+            else
+            {
+                currentBalance = getAccountBalance() - withdrawl;
+                setAccountBalance();
+                debitSuccess = true;
+            }
         }
-        if(withdrawl > accountBalance)
-        {
-            System.out.println("Debit amount exceeded account balance");
-        }
-        else
-        {
-            currentBalance = getAccountBalance() - withdrawl;
-            setAccountBalance();
-        }
-        return debitSuccess = true;
+        return debitSuccess;
     }
     
     

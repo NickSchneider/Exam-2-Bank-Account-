@@ -14,7 +14,7 @@ public class BankAccount
         
         while(!answer.equals("Q"))
         {
-            System.out.println("What type of account would you like to enter?");
+            System.out.println("\nWhat type of account would you like to enter?");
             System.out.println("Enter 'S' for Savings, 'C' for checking, or 'Q' to quit");
             answer = input.nextLine();
             
@@ -32,9 +32,9 @@ public class BankAccount
             }
             if(answer.equals("Q"))
             {
-                for(Account act : bank)
+                for(int i = 0; i <bank.size(); i++)
                 {
-                    
+                    System.out.printf("Account Balance: ", bank.get(i));
                 }
             }
         }
